@@ -17,6 +17,9 @@ class ModelTestCase(TestCase):
         new_count = Bucketlist.objects.count()
         self.assertNotEqual(old_count,new_count)
 
+    def test_model_can_delete_a_bucketlist(self):
+        pass
+
 
 class ViewTestCase(TestCase):
     """ Tests suite for the api views
