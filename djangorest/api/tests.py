@@ -1,8 +1,8 @@
-from django.test import TestCase
-from .models import Bucketlist
 from rest_framework.test import APIClient
 from rest_framework import status
-from django.core.urlresolvers import reverse
+from django.urls import reverse
+from django.test import TestCase
+from .models import Bucketlist
 
 
 class ModelTestCase(TestCase):
@@ -25,7 +25,10 @@ class ViewTestCase(TestCase):
         """ Defines the test client and other test variables. """
         self.client = APIClient()
         self.bucketlist_data = {'name', 'Go to ibaza'}
-        self.response = self.client.post(reverse('create'),self.bucketlist_data, format = "json")
+        self.response = self.client.post(
+            reverse('create'), 
+            self.bucketlist_data, 
+            format="json")
 
     def test_api_can_create_bucketlist(self):
         """ Test the api has bucket creation capability """

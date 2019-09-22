@@ -1,3 +1,19 @@
-from django.shortcuts import render
+# from django.shortcuts import render
+from rest_framework import generics
+from .serializers import BucketlistSerializer
+from .models import Bucketlist
 
-# Create your views here.
+
+class CreateView(generics.ListCreateAPIView):
+    """ This class defines the behaviour of rest api"""
+    queryset = Bucketlist.objects.all()
+    serializer_class = BucketlistSerializer
+
+    def perform_create(self, serializer):
+        """ Save the post data when a creating a new bucketlist. """
+        serializer.save()
+
+
+
+
+
